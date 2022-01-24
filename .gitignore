@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# MacOS Cruft
+.DS_STORE
+
+# pnpm Store
+.pnpm-store
+
+# Built Packages
+lib

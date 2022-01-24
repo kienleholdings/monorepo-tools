@@ -1,0 +1,49 @@
+{
+  "name": "@kienleholdings/mrt-run",
+  "version": "0.1.0",
+  "description": "Run parallel commands in monorepos with no fuss",
+  "main": "./lib/run.js",
+  "types": "./lib/run.d.ts",
+  "prettier": "@kienleholdings/prettier-config",
+  "bin": {
+    "mrt-run": "./lib/index.js"
+  },
+  "scripts": {
+    "build": "tsc --declaration",
+    "lint": "eslint --ext .ts src/",
+    "test": "echo \"TODO: Implement Tests\""
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kienleholdings/monorepo-tools.git"
+  },
+  "keywords": [
+    "Kienle Holdings",
+    "monorepo"
+  ],
+  "author": "Kienle Holdings LLC <hello@kienle.tech> (https://www.kienle.dev)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kienleholdings/monorepo-tools/issues"
+  },
+  "homepage": "https://github.com/kienleholdings/monorepo-tools/tree/main/packages/run#readme",
+  "devDependencies": {
+    "@kienleholdings/base-tsconfig": "^0.1.7",
+    "@kienleholdings/eslint-config-base": "^0.1.8",
+    "@kienleholdings/markdownlint-config": "^0.1.0",
+    "@kienleholdings/prettier-config": "^0.1.3",
+    "@types/node": "^17.0.10",
+    "eslint": "7.x",
+    "markdownlint-cli2": "^0.4.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@kienleholdings/mrt-utils": "workspace:^0.1.0",
+    "minimist-lite": "^2.1.0",
+    "tslib": "^2.3.1"
+  }
+}
