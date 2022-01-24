@@ -4,10 +4,10 @@ env:
 on:
   push:
     branches:
-      - 'develop'
+      - 'main'
 jobs:
-  build-and-test:
-    name: Build and Test
+  build-test-and-publish:
+    name: Build, Tes, and Publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -36,3 +36,5 @@ jobs:
         run: pnpm run lint
       - name: Test All Packages
         run: pnpm run test
+      - name: Publish Packages with Changes
+        run: pnpm run publish-ci
