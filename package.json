@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "version": "0.1.0",
+  "prettier": "@kienleholdings/prettier-config",
+  "scripts": {
+    "first-time-prebuild": "cd ./packages/utils && pnpm run build && cd ../run && pnpm run build && cd ../..",
+    "build": "node ./packages/run/lib/index.js build --parallel --packagesDir ../../",
+    "lint": "node ./packages/run/lib/index.js lint --parallel --packagesDir ../../",
+    "test": "node ./packages/run/lib/index.js test --parallel --packagesDir ../../",
+    "publish-ci": "node ./packages/publish/lib/index.js --packagesDir ../../"
+  },
+  "devDependencies": {
+    "@kienleholdings/prettier-config": "^0.1.3",
+    "prettier": "^2.5.1"
+  }
+}

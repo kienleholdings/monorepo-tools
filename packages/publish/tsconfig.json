@@ -1,0 +1,13 @@
+{
+  "exclude": ["node_modules"],
+  "extends": "@kienleholdings/base-tsconfig",
+  "include": ["./src"],
+  "files": ["./types/minimist-lite.d.ts"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "module": "commonjs",
+    "outDir": "lib",
+    "target": "es2021",
+    "types": ["node", "semver"]
+  }
+}

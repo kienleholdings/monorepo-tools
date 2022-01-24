@@ -1,0 +1,38 @@
+name: Develop Branch
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+on:
+  push:
+    branches:
+      - 'develop'
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Cache pnpm Modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - name: Setup Node.js 16.x (LTS)
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: Install Dependencies
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.x.x
+          run_install: true
+      - name: Run Pre-CI Setup
+        run: pnpm run first-time-prebuild
+      - name: Build All Packages
+        run: pnpm run build
+      - name: Lint All Packages
+        run: pnpm run lint
+      - name: Test All Packages
+        run: pnpm run test
