@@ -7,7 +7,7 @@ on:
       - 'main'
 jobs:
   build-test-and-publish:
-    name: Build, Tes, and Publish
+    name: Build, Test, and Publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
