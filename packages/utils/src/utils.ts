@@ -1,6 +1,6 @@
 import execa, { ExecaError } from 'execa';
 import { readdir, readFile } from 'fs/promises';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 export interface RunArgs {
   npmCommand: string;
@@ -32,11 +32,13 @@ export const logError = (message: string): void => {
 };
 
 export const getPackagesFromDirectory = async (packagesDir: string): Promise<Package[]> => {
-  const resolvedPackagesDir = join(__dirname, packagesDir);
+  const resolvedPackagesDir = resolve(process.cwd(), packagesDir);
 
   let pkgPaths: string[];
   try {
-    pkgPaths = await readdir(resolvedPackagesDir);
+    pkgPaths = (await readdir(resolvedPackagesDir, { withFileTypes: true }))
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
   } catch (err) {
     throw new Error(
       `There was an error reading the directory ${resolvedPackagesDir}: ${err.message}`

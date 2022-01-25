@@ -1,6 +1,6 @@
 {
   "name": "@kienleholdings/mrt-publish",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Publish packages automatically if their version has changed",
   "main": "./lib/publish.js",
   "types": "./lib/publish.d.ts",
@@ -43,7 +43,7 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "@kienleholdings/mrt-utils": "workspace:^0.1.0",
+    "@kienleholdings/mrt-utils": "workspace:^0.1.1",
     "axios": "^0.25.0",
     "minimist-lite": "^2.1.0",
     "semver": "^7.3.5",
