@@ -5,7 +5,7 @@ import publish from './publish';
 
 const DEFAULT_ARGS: RunArgs = {
   npmCommand: 'pnpm',
-  packagesDir: './packages',
+  packagesDir: 'packages',
   parallel: false,
 };
 
