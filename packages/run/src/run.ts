@@ -32,6 +32,7 @@ const run = async (args: RunArgs, fullCommand: string): Promise<void> => {
     await executionFunction(packagesWithCommand, npmCommand, ['run', ...command]);
   } catch (err) {
     logError(err.message);
+    process.exit(1);
   }
 };
 

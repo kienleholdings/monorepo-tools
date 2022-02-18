@@ -1,6 +1,6 @@
 {
   "name": "@kienleholdings/mrt-run",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Run parallel commands in monorepos with no fuss",
   "main": "./lib/run.js",
   "types": "./lib/run.d.ts",
