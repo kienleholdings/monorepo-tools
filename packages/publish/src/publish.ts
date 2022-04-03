@@ -1,13 +1,13 @@
 import {
   executeCommandsInOrder,
   executeCommandsParallel,
+  executeCommandWithLocalOutput,
   getPackagesFromDirectory,
   logError,
   Package,
   RunArgs,
 } from '@kienleholdings/mrt-utils';
 
-import axios from 'axios';
 import semver from 'semver';
 
 const publish = async (args: RunArgs): Promise<void> => {
@@ -21,23 +21,19 @@ const publish = async (args: RunArgs): Promise<void> => {
     process.exit(1);
   }
 
-  let latestPackageVersions: string[];
-  try {
-    latestPackageVersions = (
-      await Promise.all(
-        allPackages.map((pkg) =>
-          axios.get(`https://registry.npmjs.org/-/package/${pkg.jsonContents.name}/dist-tags`, {
-            // Packages that don't exist can sometimes show up as unauthorized, we'll leave this for now
-            validateStatus: (statusCode) =>
-              statusCode >= 200 && (statusCode < 300 || statusCode === 401),
-          })
-        )
-      )
-    ).map((res) => (res.data === 'Unauthorized' ? '0.0.0' : res.data.latest));
-  } catch (err) {
-    logError(err.message);
-    process.exit(1);
-  }
+  const rawPackageVersions = await Promise.all(
+    allPackages.map((pkg) =>
+      executeCommandWithLocalOutput(npmCommand, ['view', pkg.jsonContents?.name || '', 'version'])
+    )
+  );
+
+  const latestPackageVersions = rawPackageVersions.map((version) => {
+    // ackages that don't exist can sometimes show up as a 404, so by default we'll return 0.0.0 for those
+    if (version.includes('npm ERR! code E404')) {
+      return '0.0.0';
+    }
+    return version.trimEnd();
+  });
 
   const packagesWithNewerVersion: Package[] = [];
   allPackages.forEach((pkg, key) => {

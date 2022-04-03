@@ -6,19 +6,19 @@
 
 With pnpm (recommended)
 
-```
+```bash
 pnpm install @kienleholdings/mrt-publish
 ```
 
 With yarn
 
-```
+```bash
 yarn add @kienleholdings/mrt-publish
 ```
 
 With npm
 
-```
+```bash
 npm install @kienleholdings/mrt-publish
 ```
 

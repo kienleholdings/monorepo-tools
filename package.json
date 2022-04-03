@@ -5,12 +5,14 @@
   "scripts": {
     "first-time-prebuild": "cd ./packages/utils && pnpm run build && cd ../run && pnpm run build && cd ../..",
     "build": "node ./packages/run/lib/index.js build --parallel",
-    "lint": "node ./packages/run/lib/index.js lint --parallel",
+    "lint": "markdownlint-cli2 \"./*.md\" && node ./packages/run/lib/index.js lint --parallel",
     "test": "node ./packages/run/lib/index.js test --parallel",
     "publish-ci": "node ./packages/publish/lib/index.js"
   },
   "devDependencies": {
-    "@kienleholdings/prettier-config": "^0.1.3",
-    "prettier": "^2.5.1"
+    "@kienleholdings/markdownlint-config": "^0.1.1",
+    "@kienleholdings/prettier-config": "^0.1.4",
+    "markdownlint-cli2": "^0.4.0",
+    "prettier": "^2.6.2"
   }
 }

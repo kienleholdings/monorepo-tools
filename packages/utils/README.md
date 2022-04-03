@@ -6,19 +6,19 @@
 
 With pnpm (recommended)
 
-```
+```bash
 pnpm install @kienleholdings/mrt-utils
 ```
 
 With yarn
 
-```
+```bash
 yarn add @kienleholdings/mrt-utils
 ```
 
 With npm
 
-```
+```bash
 npm install @kienleholdings/mrt-utils
 ```
 
