@@ -81,6 +81,33 @@ export const handleExecaError = (err: ExecaError, packageName: string): void => 
   throw err;
 };
 
+// In order to structure variable output in a predictable way, this is never run parallel
+export const executeCommandWithLocalOutput = async (
+  command: string,
+  args: string[]
+): Promise<string> => {
+  let output = '';
+  const commandPromise = execa(command, args);
+
+  // eslint-disable-next-line no-loop-func
+  commandPromise.stdout?.on('data', (log) => {
+    output += log;
+  });
+  // eslint-disable-next-line no-loop-func
+  commandPromise.stderr?.on('data', (log) => {
+    output += log;
+  });
+
+  try {
+    // We're intentionally removing parallel processing, therefor I'm disabling this rule
+    // eslint-disable-next-line no-await-in-loop
+    await commandPromise;
+  } catch (err) {
+    output = err.message;
+  }
+  return output;
+};
+
 export const executeCommandsParallel = async (
   packages: Package[],
   command: string,
