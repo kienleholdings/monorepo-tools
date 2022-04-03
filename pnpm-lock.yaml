@@ -19,7 +19,7 @@ importers:
       '@kienleholdings/base-tsconfig': ^0.1.8
       '@kienleholdings/eslint-config-base': ^0.1.9
       '@kienleholdings/markdownlint-config': ^0.1.1
-      '@kienleholdings/mrt-utils': workspace:^0.1.2
+      '@kienleholdings/mrt-utils': workspace:^0.2.0
       '@kienleholdings/prettier-config': ^0.1.4
       '@types/node': 16.x
       '@types/semver': ^7.3.9
@@ -52,7 +52,7 @@ importers:
       '@kienleholdings/base-tsconfig': ^0.1.8
       '@kienleholdings/eslint-config-base': ^0.1.9
       '@kienleholdings/markdownlint-config': ^0.1.1
-      '@kienleholdings/mrt-utils': workspace:^0.1.1
+      '@kienleholdings/mrt-utils': workspace:^0.2.0
       '@kienleholdings/prettier-config': ^0.1.4
       '@types/node': 16.x
       eslint: ~8.12.0
